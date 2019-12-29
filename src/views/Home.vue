@@ -1,5 +1,10 @@
 <template>
   <v-container fluid class="home">
+    <v-row align="center" justify="center" class="mb-5 mt-5">
+      <router-link :to="{ name: 'about' }" class="text-center">
+        ราคาและวิธีใช้งาน
+      </router-link>
+    </v-row>
     <v-row align="center" justify="center">
       <v-col v-for="locker in lockerM" :key="locker.id" cols="2">
         <v-btn
@@ -18,7 +23,7 @@
           outlined
           color="error"
           router
-          :to="{ name: 'locker', params: { id: locker.id } }"
+          :to="{ name: 'lockerwithdraw', params: { id: locker.id } }"
         >
           {{ locker.size }}
         </v-btn>
@@ -44,7 +49,7 @@
           outlined
           color="error"
           router
-          :to="{ name: 'locker', params: { id: locker.id } }"
+          :to="{ name: 'lockerwithdraw', params: { id: locker.id } }"
         >
           {{ locker.size }}
         </v-btn>
@@ -70,7 +75,7 @@
           outlined
           color="error"
           router
-          :to="{ name: 'locker', params: { id: locker.id } }"
+          :to="{ name: 'lockerwithdraw', params: { id: locker.id } }"
         >
           {{ locker.size }}
         </v-btn>
@@ -86,7 +91,7 @@ import { mapState } from "vuex";
 export default {
   name: "Home",
 
-  created() {
+  async created() {
     this.$store.dispatch("set_lockers");
   },
 
